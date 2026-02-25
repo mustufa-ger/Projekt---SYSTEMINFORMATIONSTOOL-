@@ -18,7 +18,15 @@ print("Gesamtanzahl Kerne:", psutil.cpu_count(logical=True))
 print("CPU-Auslastung (%):", psutil.cpu_percent(interval=1)) 
 #misst die leistung von CPU uber 1 sekunde ( interval = 1 ) und cpu_percent benutzen wir um die leistung zu sehen also mit wie viel ihrer leistung arbeitet CPU  
 print()
+# RAM-Informationen
+ram = psutil.virtual_memory()
 
+print("\nRAM-Informationen:")
+print("Gesamter RAM:", round(ram.total / (1024**3), 2), "GB")
+print("Verfügbarer RAM:", round(ram.available / (1024**3), 2), "GB")
+print("Verwendeter RAM:", round(ram.used / (1024**3), 2), "GB")
+print("RAM-Auslastung (%):", ram.percent)
+print()
 # Netzwerk-Informationen
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
